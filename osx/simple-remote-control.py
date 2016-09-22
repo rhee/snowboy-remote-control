@@ -2,6 +2,12 @@ import snowboydecoder
 import sys
 import signal
 import requests
+import json
+
+config = {}
+
+with open('../config.json') as config_json:
+    config = json.load(config_json)
 
 interrupted = False
 
@@ -19,11 +25,11 @@ signal.signal(signal.SIGINT, signal_handler)
 
 def callback_next():
     snowboydecoder.play_audio_file(snowboydecoder.DETECT_DING)
-    print "[next]", requests.get("https://gc-airi-demo.keyma.kr/simple-remote/next")
+    print "[next]", requests.get(config.url + "/next")
 
 def callback_back():
     snowboydecoder.play_audio_file(snowboydecoder.DETECT_DONG)
-    print "[back]", requests.get("https://gc-airi-demo.keyma.kr/simple-remote/back")
+    print "[back]", requests.get(config.url + "/back")
 
 
 
