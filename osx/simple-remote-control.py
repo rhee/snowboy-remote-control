@@ -1,12 +1,13 @@
 import snowboydecoder
 import sys
+from os import path
 import signal
 import requests
 import json
 
 config = {}
 
-with open('../config.json') as config_json:
+with open(path.join(path.dirname(__file__),'..','config.json')) as config_json:
     config = json.load(config_json)
 
 interrupted = False

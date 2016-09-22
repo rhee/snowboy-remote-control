@@ -1,12 +1,13 @@
 import snowboydecoder
 import sys
+from os import path
 import signal
 import requests
 import json
 
 config = {}
 
-with open('../config.json') as config_json:
+with open(path.join(path.dirname(__file__),'..','config.json')) as config_json:
     config = json.load(config_json)
 
 interrupted = False
@@ -32,8 +33,11 @@ def callback_back():
     print "[back]", requests.get(config['url'] + "/back")
 
 
+models = [
+  path.join(path.dirname(__file__),'..','resources','k-next.pmdl'),
+  path.join(path.dirname(__file__),'..','resources','k-back.pmdl')
+]
 
-models = [ '../resources/k-next.pmdl', '../resources/k-back.pmdl' ]
 detector = snowboydecoder.HotwordDetector(models, sensitivity = [0.44] * len(models))
 callbacks = [ callback_next, callback_back ]
 
