@@ -29,7 +29,7 @@ def callback_next():
 
 def callback_back():
     snowboydecoder.play_audio_file(snowboydecoder.DETECT_DONG)
-    print "[back]", requests.get(config.['url']+ "/back")
+    print "[back]", requests.get(config['url'] + "/back")
 
 
 
