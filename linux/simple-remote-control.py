@@ -6,8 +6,9 @@ import requests
 import json
 
 config = {}
+base_dir = path.join(path.dirname(__file__),'..')
 
-with open(path.join(path.dirname(__file__),'..','config.json')) as config_json:
+with open(path.join(base_dir,'config.json')) as config_json:
     config = json.load(config_json)
 
 interrupted = False
@@ -33,9 +34,10 @@ def callback_back():
     print "[back]", requests.get(config['url'] + "/back")
 
 
+
 models = [
-  path.join(path.dirname(__file__),'..','resources','k-next.pmdl'),
-  path.join(path.dirname(__file__),'..','resources','k-back.pmdl')
+  path.join(base_dir,'resources','k-next.pmdl'),
+  path.join(base_dir,'resources','k-back.pmdl')
 ]
 
 detector = snowboydecoder.HotwordDetector(models, sensitivity = [0.44] * len(models))
@@ -51,3 +53,4 @@ detector.start(detected_callback=callbacks,
                sleep_time=0.03)
 
 detector.terminate()
+
