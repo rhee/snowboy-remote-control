@@ -6,7 +6,7 @@ import requests
 import json
 
 config = {}
-base_dir = path.join(path.dirname(__file__),'..')
+base_dir = path.join(path.dirname(path.abspath(__file__)),'..')
 
 with open(path.join(base_dir,'config.json')) as config_json:
     config = json.load(config_json)
