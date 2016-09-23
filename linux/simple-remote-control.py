@@ -40,7 +40,9 @@ models = [
   path.join(base_dir,'resources','k-back.pmdl')
 ]
 
-detector = snowboydecoder.HotwordDetector(models, sensitivity = [0.44] * len(models))
+stivity = 0.4
+
+detector = snowboydecoder.HotwordDetector(models, sensitivity = [stivity] * len(models))
 callbacks = [ callback_next, callback_back ]
 
 print('Listening... Press Ctrl+C to exit')
