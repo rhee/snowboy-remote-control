@@ -1,12 +1,15 @@
-import snowboydecoder
 import sys
 from os import path
 import signal
 import requests
 import json
 
+#from linux import snowboydecoder
+from osx import snowboydecoder
+
 config = {}
-base_dir = path.join(path.dirname(path.abspath(__file__)),'..')
+#base_dir = path.join(path.dirname(path.abspath(__file__)),'..')
+base_dir = path.dirname(path.abspath(__file__))
 
 with open(path.join(base_dir,'config.json')) as config_json:
     config = json.load(config_json)
